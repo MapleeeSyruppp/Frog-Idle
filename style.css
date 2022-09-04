@@ -1,0 +1,121 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    color: #ffffff;
+    background-color: #3f0d38;
+}
+.container{
+    display: block;
+    justify-content: center;
+    margin: 0 auto
+}
+.game-container{
+    display: block;
+    justify-content: center;
+    border-radius: 15px;
+    background-color: rgb(90, 90, 90);
+    height: 600px;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 150px;
+}
+/* ----- NAV BAR ----- */
+.info-bar{
+    display: inline-flex;
+    flex-direction: row;
+    background-color: rgb(68, 68, 68);
+    margin-top: 15px;
+    height: 40px;
+    width: 750px;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+.info-bar h1{
+    margin: 0 auto;
+}
+
+/* ----- PLAY AREA ----- */
+
+.play-area{
+    display: flex;
+    margin-top: 15px;
+    margin-left: 26px;
+    width: 94%;
+    height: 85%;
+}
+.play-area .col1{
+    width: 60%;
+}
+.play-area .col1 .clicker{
+    margin-top: 15%;
+    width: 75%;
+    transition: 0.1s;
+}
+.play-area .col1 .clicker:hover{
+    scale: 105%;
+}
+.play-area .col1 .clicker:active{
+    scale: 110%;
+}
+
+.play-area .col2{
+    border-radius: 10px;
+    background-color: rgb(68, 68, 68);
+    width: 40%;
+}
+
+
+/* UPGRADE ONE */
+.flies {
+    margin: 0 auto;
+    padding: 3px 0 3px 0;
+    background-color: rgb(54, 54, 54);
+    border-radius: 10px;
+    width: 95%;
+    margin-bottom: 10px;
+    transition: 0.1s;
+}
+.flies:hover {
+    scale: 95%;
+    background-color: rgb(43, 43, 43) ;
+}
+.flies:active {
+    scale: 100%;
+}
+.flies h3{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.flies p{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+
+/* UPGRADE TWO */
+.buddies {
+    margin: 0 auto;
+    padding: 3px 0 3px 0;
+    background-color: rgb(54, 54, 54);
+    border-radius: 10px;
+    width: 95%;
+    margin-bottom: 10px;
+    transition: 0.1s;
+}
+.buddies:hover {
+    scale: 95%;
+    background-color: rgb(43, 43, 43) ;
+}
+.buddies:active {
+    scale: 100%;
+}
+.buddies h3{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.buddies p{
+    margin-top: 0;
+    margin-bottom: 0;
+}

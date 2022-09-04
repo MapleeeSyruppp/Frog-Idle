@@ -1,2 +1,3 @@
 # Syrup-Idle
- An idle game about Syrup!
+
+An idle game about Syrup!
