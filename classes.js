@@ -53,12 +53,15 @@ class Upgrade{
     }
     canPurchase(){
         if(player.score >= this.price){
-            this.element.style = 'background-color: rgb(29, 165, 36)'
+            this.element.style = 'background-color: rgb(170, 204, 91)'
+        }
+        else{
+            this.element.style = 'background-color: rgb(50, 124, 68)'
         }
     }
     purchase(){
+        this.canPurchase()
         if(player.score >= this.price){
-            this.element.style = 'background-color: rgb(54, 54, 54)'
             // Increase buddie count
             this.count += 1
             this.element.children[0].textContent = `${this.name} (${this.count})`
@@ -70,7 +73,6 @@ class Upgrade{
             this.price = Math.round(this.price * 1.55)
             this.updateCost()
             this.canPurchase()
-            this.updateImg()
         }
         else{
             console.log(`cant purchase`)
