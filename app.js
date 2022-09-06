@@ -2,7 +2,11 @@ let clicker = document.querySelector('.clicker')
 let counter = document.querySelector('.counter');
 let perSecond = document.querySelector('.counter-per-second')
 let upgradeContainer = document.querySelector('.col2')
-
+// TODO
+// FLYBAIT UPGRADE
+// BIGGER POND UPGRADE
+// FLYTRAP UPGRADE
+// BUGZAPPER UPGRADE
 let player = new Player(0, 1)
 
 // Generate Upgrades
