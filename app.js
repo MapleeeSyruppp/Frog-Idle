@@ -19,35 +19,45 @@ lilypad.generate()
 let buddies = new Upgrade('buddies', 200,2)
 buddies.generate()
 
-clicker.onclick = function () {
-    player.increaseScore()
+let flybait = new Upgrade('flybait', 400,4)
+flybait.generate()
+
+function canPurchase(){
     buddies.canPurchase()
     lilypad.canPurchase()
     testMultiplier.canPurchase()
+    flybait.canPurchase()
+}
+
+clicker.onclick = function () {
+    player.increaseScore()
+    canPurchase()
 }
 
 buddies.element.onclick = function () {
     buddies.purchase()
     buddies.updateCost()
     buddies.updateImg()
-    lilypad.canPurchase()
-    testMultiplier.canPurchase()
+    canPurchase()
 }
 
 lilypad.element.onclick = function () {
     lilypad.purchase()
     lilypad.updateCost()
-    buddies.canPurchase()
-    testMultiplier.canPurchase()
+    canPurchase()
 }
 
 testMultiplier.element.onclick = function () {
     testMultiplier.purchase()
     testMultiplier.updateCost()
-    buddies.canPurchase()
-    lilypad.canPurchase()
+    canPurchase()
 }
 
+flybait.element.onclick = function () {
+    flybait.purchase()
+    flybait.updateCost()
+    canPurchase()
+}
 
 
 setInterval(() => {
@@ -57,8 +67,11 @@ setInterval(() => {
     if(buddies.count >= 1){
         buddies.update()
     }
+    if(flybait.count >= 1){
+        flybait.update()
+    }
 }, 1000)
 
 setInterval(() => {
-    perSecond.textContent = `${(buddies.count * buddies.increment) + (lilypad.count * lilypad.increment)} Fp/s`
+    perSecond.textContent = `${(buddies.count * buddies.increment) + (lilypad.count * lilypad.increment) + (flybait.count * flybait.increment)} Fp/s`
 }, 100)
