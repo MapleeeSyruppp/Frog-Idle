@@ -1,10 +1,13 @@
 body{
+    margin: 0;
+    padding: 0;
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
     color: rgb(185, 255, 212);
     background-image: url(./images/bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 .container{
     display: block;
@@ -69,9 +72,15 @@ body{
     background-color: rgb(65, 161, 89);
     width: 40%;
 }
+.play-area .counter{
+    margin-bottom: 0;
+}
+.play-area .counter-per-second{
+    margin-top: 0;
+}
 
 /* UPGRADE */
-.buddies {
+.upgrade-btn {
     margin: 0 auto;
     padding: 3px 0 3px 0;
     background-color: rgb(50, 124, 68);
@@ -81,45 +90,18 @@ body{
     transition: 0.1s;
     cursor: pointer;
 }
-.buddies:hover {
+.upgrade-btn:hover {
     scale: 95%;
     background-color: rgb(38, 97, 53);
 }
-.buddies:active {
+.upgrade-btn:active {
     scale: 100%;
 }
-.buddies h3{
+.upgrade-btn h3{
     margin-top: 0;
     margin-bottom: 0;
 }
-.buddies p{
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-/* UPGRADE */
-.lilypad {
-    margin: 0 auto;
-    padding: 3px 0 3px 0;
-    background-color: rgb(50, 124, 68);
-    border-radius: 10px;
-    width: 95%;
-    margin-bottom: 10px;
-    transition: 0.1s;
-    cursor: pointer;
-}
-.lilypad:hover {
-    scale: 95%;
-    background-color: rgb(38, 97, 53);
-}
-.lilypad:active {
-    scale: 100%;
-}
-.lilypad h3{
-    margin-top: 0;
-    margin-bottom: 0;
-}
-.lilypad p{
+.upgrade-btn p{
     margin-top: 0;
     margin-bottom: 0;
 }

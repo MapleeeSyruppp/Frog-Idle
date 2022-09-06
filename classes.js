@@ -25,11 +25,37 @@ class Upgrade{
     generate(opt){
         if(opt === 0 || opt === null || opt === undefined){
             let container = document.createElement('div')
-            container.setAttribute('class',`${this.name}`)
+            container.setAttribute('class',`upgrade-btn ${this.name}`)
 
             // Creates header of the upgrade
             let header = document.createElement('h3')
             header.textContent = `${this.name} `
+            container.append(header)
+
+            // Creates the cost of the upgrade
+            let priceParagraph = document.createElement('p')
+            priceParagraph.textContent = 'Cost: '
+            let price = document.createElement('span')
+            price.setAttribute('class','cost')
+            price.textContent = this.price
+            priceParagraph.append(price)
+            container.append(priceParagraph)
+
+            // Appends the tags to the col2 container
+            upgradeContainer.append(container)
+            // Creates element property in the object
+            this.element = document.querySelector(`.${this.name}`)
+        }
+        if(opt === 1){
+            let container = document.createElement('div')
+            container.setAttribute('class',`upgrade-btn ${this.name}`)
+
+            // Creates header of the upgrade
+            let header = document.createElement('h3')
+            let span = document.createElement('span')
+            span.textContent = ` x${this.increment -1}`
+            header.textContent = `${this.name} `
+            header.append(span)
             container.append(header)
 
             // Creates the cost of the upgrade
@@ -70,12 +96,9 @@ class Upgrade{
             // Change their click increment
             counter.textContent = `${player.score} Flies`
 
-            this.price = Math.round(this.price * 1.55)
+            this.price = Math.round(this.price * 1.25)
             this.updateCost()
             this.canPurchase()
-        }
-        else{
-            console.log(`cant purchase`)
         }
     }
     update(){
@@ -84,11 +107,58 @@ class Upgrade{
     }
     updateImg(){
         if(this.count <= 10){
-            var img = document.querySelector('.clicker')
+            let img = document.querySelector('.clicker')
             img.src = `./images/frog_buddies_${this.count}.png`
         }
-        else{
-            img.src = `./images/frog_buddies_${10}.png`
+    }
+}
+
+class MultiplierUpgrade extends Upgrade{
+    constructor(name,price,increment){
+        super(name, price, increment)
+        this.count = 1
+    }
+    generate(){
+        let container = document.createElement('div')
+        container.setAttribute('class',`upgrade-btn ${this.name}`)
+
+        // Creates header of the upgrade
+        let header = document.createElement('h3')
+        let span = document.createElement('span')
+        span.textContent = ` x${this.increment + 1}`
+        header.textContent = `${this.name} `
+        header.append(span)
+        container.append(header)
+
+        // Creates the cost of the upgrade
+        let priceParagraph = document.createElement('p')
+        priceParagraph.textContent = 'Cost: '
+        let price = document.createElement('span')
+        price.setAttribute('class','cost')
+        price.textContent = this.price
+        priceParagraph.append(price)
+        container.append(priceParagraph)
+
+        // Appends the tags to the col2 container
+        upgradeContainer.append(container)
+        // Creates element property in the object
+        this.element = document.querySelector(`.${this.name}`)
+    }
+    purchase(){
+        this.canPurchase()
+        if(player.score >= this.price){
+            player.increment += this.increment
+            // Increase buddie count
+            this.count += 0
+            this.element.children[0].textContent = `${this.name} x${player.increment + 1}`
+            // Subtract price from players score
+            player.score -= this.price
+            // Change their click increment
+            counter.textContent = `${player.score} Flies`
+
+            this.price = Math.round(this.price * 10)
+            this.updateCost()
+            this.canPurchase()
         }
     }
 }
