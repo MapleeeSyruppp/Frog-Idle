@@ -156,7 +156,7 @@ class MultiplierUpgrade extends Upgrade{
             // Change their click increment
             counter.textContent = `${player.score} Flies`
 
-            this.price = Math.round(this.price * 10)
+            this.price = Math.round(this.price * 2)
             this.updateCost()
             this.canPurchase()
         }
