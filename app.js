@@ -2,19 +2,20 @@ let clicker = document.querySelector('.clicker')
 let counter = document.querySelector('.counter');
 let upgradeContainer = document.querySelector('.upgrades')
 
-
 // Player 
 let player = new Player(0, 1)
 
 // Generate Upgrades
-let testMultiplier = new MultiplierUpgrade('clickies', 50,1)
-let lilypad = new Upgrade('lilypad', 100,1)
-let buddies = new Upgrade('buddies', 200,2)
-let flybait = new Upgrade('flybait', 400,4)
-let flytrap = new Upgrade('flytrap', 800, 6)
+let clickies = new MultiplierUpgrade('clickies', 50,1)
+let lilypad = new Upgrade('lilypad', 100,2)
+let buddies = new Upgrade('buddies', 200,4)
+let flybait = new Upgrade('flybait', 400,6)
+let flytrap = new Upgrade('flytrap', 800, 8)
 let bugzapper = new Upgrade('bugzapper', 1000, 10)
 
-const upgrades = [testMultiplier, lilypad, buddies, flybait, flytrap, bugzapper]
+// Upgrades Array
+const upgrades = [clickies, lilypad, buddies, flybait, flytrap, bugzapper]
+
 // Generate each upgrade
 upgrades.forEach((upgrade) => {
     upgrade.generate()
@@ -29,7 +30,6 @@ function canPurchase(){
 
 // Adds click event listener to each upgrade button
 upgrades.forEach((upgrade) => {
-    console.log(upgrade.element)
     upgrade.element.addEventListener("click", (ev) => {
         // Upgrade Btn on click
         upgrade.purchase()
