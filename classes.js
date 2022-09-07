@@ -1,6 +1,7 @@
 class Player{
     constructor(score, increment){
         this.score = score
+        this.totalScore = this.score
         this.increment = increment
     }
 

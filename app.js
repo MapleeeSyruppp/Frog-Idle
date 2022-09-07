@@ -1,77 +1,69 @@
 let clicker = document.querySelector('.clicker')
 let counter = document.querySelector('.counter');
-let perSecond = document.querySelector('.counter-per-second')
-let upgradeContainer = document.querySelector('.col2')
-// TODO
-// FLYBAIT UPGRADE
-// BIGGER POND UPGRADE
-// FLYTRAP UPGRADE
-// BUGZAPPER UPGRADE
+let upgradeContainer = document.querySelector('.upgrades')
+
+
+// Player 
 let player = new Player(0, 1)
 
 // Generate Upgrades
 let testMultiplier = new MultiplierUpgrade('clickies', 50,1)
-testMultiplier.generate()
-
 let lilypad = new Upgrade('lilypad', 100,1)
-lilypad.generate()
-
 let buddies = new Upgrade('buddies', 200,2)
-buddies.generate()
-
 let flybait = new Upgrade('flybait', 400,4)
-flybait.generate()
+let flytrap = new Upgrade('flytrap', 800, 6)
+let bugzapper = new Upgrade('bugzapper', 1000, 10)
 
+const upgrades = [testMultiplier, lilypad, buddies, flybait, flytrap, bugzapper]
+// Generate each upgrade
+upgrades.forEach((upgrade) => {
+    upgrade.generate()
+})
+
+// Can player purchase any upgrade
 function canPurchase(){
-    buddies.canPurchase()
-    lilypad.canPurchase()
-    testMultiplier.canPurchase()
-    flybait.canPurchase()
+    upgrades.forEach((upgrade) => {
+        upgrade.canPurchase()
+    })
 }
 
+// Adds click event listener to each upgrade button
+upgrades.forEach((upgrade) => {
+    console.log(upgrade.element)
+    upgrade.element.addEventListener("click", (ev) => {
+        // Upgrade Btn on click
+        upgrade.purchase()
+        upgrade.updateCost()
+        if(upgrade.name === "buddies"){
+            buddies.updateImg()
+        }
+    })
+})
+
 clicker.onclick = function () {
+    const audio = new Audio("./sound/click_sound.mp3")
+    audio.volume = 0.01
+    audio.play()
     player.increaseScore()
     canPurchase()
 }
 
-buddies.element.onclick = function () {
-    buddies.purchase()
-    buddies.updateCost()
-    buddies.updateImg()
-    canPurchase()
-}
-
-lilypad.element.onclick = function () {
-    lilypad.purchase()
-    lilypad.updateCost()
-    canPurchase()
-}
-
-testMultiplier.element.onclick = function () {
-    testMultiplier.purchase()
-    testMultiplier.updateCost()
-    canPurchase()
-}
-
-flybait.element.onclick = function () {
-    flybait.purchase()
-    flybait.updateCost()
-    canPurchase()
-}
-
-
 setInterval(() => {
-    if(lilypad.count >= 1){
-        lilypad.update()
-    }
-    if(buddies.count >= 1){
-        buddies.update()
-    }
-    if(flybait.count >= 1){
-        flybait.update()
-    }
+    let updateableUpgrades = [upgrades[1], upgrades[2], upgrades[3], upgrades[4], upgrades[5]]
+    updateableUpgrades.forEach((upgrade) => {
+        if(upgrade.count >= 1){
+            upgrade.update()
+            canPurchase()
+        }
+    })
 }, 1000)
 
 setInterval(() => {
-    perSecond.textContent = `${(buddies.count * buddies.increment) + (lilypad.count * lilypad.increment) + (flybait.count * flybait.increment)} Fp/s`
+    let perSecond = document.querySelector('.counter-per-second')
+    perSecond.textContent = `${
+        (buddies.count * buddies.increment) + 
+        (lilypad.count * lilypad.increment) + 
+        (flybait.count * flybait.increment) + 
+        (flytrap.count * flytrap.increment) +
+        (bugzapper.count * bugzapper.increment)} Fp/s`
 }, 100)

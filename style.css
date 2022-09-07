@@ -8,6 +8,7 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    user-select: none;
 }
 .container{
     display: block;
@@ -40,6 +41,30 @@ body{
     margin: 0 auto;
 }
 
+/* ----- SCROLL BAR ----- */
+
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    margin-block-start: 80px;
+    border-radius: 10px;
+    background-color: rgb(65, 161, 89);
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: rgb(50, 124, 68);
+    transition: 1s;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: rgb(38, 97, 53);
+}
+::-webkit-scrollbar-thumb:active{
+    background-color: rgb(38, 97, 53);
+}
+
+
 /* ----- PLAY AREA ----- */
 
 .play-area{
@@ -71,6 +96,10 @@ body{
     border-radius: 10px;
     background-color: rgb(65, 161, 89);
     width: 40%;
+    overflow-y: auto;
+}
+.play-area .upgrades{
+    margin-right: 10px;
 }
 .play-area .counter{
     margin-bottom: 0;
