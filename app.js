@@ -18,7 +18,7 @@ if(localStorage.getItem("player") == null){
     localStorage.setItem("player", JSON.stringify(player))
 }
 if(localStorage.getItem("upgrades") == null){
-    localStorage.setItem("upgrades", {counts: [buddies.count, lilypad.count, flybait.count, flytrap.count, bugzapper.count]})
+    localStorage.setItem("upgrades", JSON.stringify({counts: [buddies.count, lilypad.count, flybait.count, flytrap.count, bugzapper.count]}))
 }
 let playerDeserialized = JSON.parse(localStorage.getItem("player"))
 let upgradesDeserialized = JSON.parse(localStorage.getItem("upgrades"))
