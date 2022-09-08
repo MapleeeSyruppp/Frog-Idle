@@ -2,13 +2,8 @@ let clicker = document.querySelector('.clicker')
 let counter = document.querySelector('.counter');
 let upgradeContainer = document.querySelector('.upgrades')
 
-// Get from Local Storage
-let playerDeserialized = JSON.parse(localStorage.getItem("player"))
-
 // Player 
 let player = new Player(0, 1)
-player.score = playerDeserialized.score
-player.increment = playerDeserialized.increment
 
 // Generate Upgrades
 let clickies = new MultiplierUpgrade('clickies', 50,1)
@@ -18,7 +13,21 @@ let flybait = new Upgrade('flybait', 400,6)
 let flytrap = new Upgrade('flytrap', 800, 8)
 let bugzapper = new Upgrade('bugzapper', 1000, 10)
 
+// Get from Local Storage
+if(localStorage.getItem("player") == null){
+    localStorage.setItem("player", JSON.stringify(player))
+}
+if(localStorage.getItem("upgrades") == null){
+    localStorage.setItem("upgrades", {counts: [buddies.count, lilypad.count, flybait.count, flytrap.count, bugzapper.count]})
+}
+let playerDeserialized = JSON.parse(localStorage.getItem("player"))
 let upgradesDeserialized = JSON.parse(localStorage.getItem("upgrades"))
+
+// Player
+player.score = playerDeserialized.score
+player.increment = playerDeserialized.increment
+
+// upgrades
 buddies.count = upgradesDeserialized.counts[0]
 lilypad.count = upgradesDeserialized.counts[1]
 flybait.count = upgradesDeserialized.counts[2]
