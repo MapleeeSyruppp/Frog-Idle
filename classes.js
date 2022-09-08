@@ -1,7 +1,6 @@
 class Player{
     constructor(score, increment){
         this.score = score
-        this.totalScore = this.score
         this.increment = increment
     }
 
@@ -77,6 +76,8 @@ class Upgrade{
     updateCost(){
         let price = document.querySelector(`.${this.name} .cost`)
         price.textContent = this.price
+
+
     }
     canPurchase(){
         if(player.score >= this.price){
